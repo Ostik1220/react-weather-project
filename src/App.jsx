@@ -8,11 +8,22 @@ import DayForecast from "components/DayForecast";
 import News from "components/News";
 import Nature from "components/Nature";
 import Footer from "components/Footer";
-
+import { CircularProgress } from 'react-loader-spinner'
 
 export const App = () => {
   return (
     <div className="container">
+<CircularProgress
+height="100"
+width="100"
+color="#FFB36C"
+ariaLabel="circular-progress-loading"
+wrapperStyle={{}}
+wrapperClass="wrapper-class"
+visible={true}
+strokeWidth={2}
+animationDuration={1}
+/>
       <h1>Welcome to the App!</h1>
       <Header />
       <Hero />
