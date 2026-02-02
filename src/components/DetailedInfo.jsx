@@ -1,4 +1,4 @@
 const DetailedInfo = () => {
-  return <div>Detailed Info Component</div>;
+  return <div className="container">Detailed Info Component</div>;
 };
 export default DetailedInfo;

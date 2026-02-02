@@ -1,4 +1,4 @@
 const DayForecast = () => {
-  return <div>Day Forecast Component</div>;
+  return <div className="container">Day Forecast Component</div>;
 };
 export default DayForecast;

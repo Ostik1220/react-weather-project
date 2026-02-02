@@ -5,7 +5,7 @@ import { Doughnut } from 'react-chartjs-2';
 
 const WeekForecast = () => {
 
-  return <div>Week Forecast Component
+  return <div className='container'>Week Forecast Component
   </div>;
   
 };

@@ -12,8 +12,8 @@ import { CircularProgress } from 'react-loader-spinner'
 
 export const App = () => {
   return (
-    <div className="container">
-<CircularProgress
+    <div>
+{/* <CircularProgress
 height="100"
 width="100"
 color="#FFB36C"
@@ -23,8 +23,7 @@ wrapperClass="wrapper-class"
 visible={true}
 strokeWidth={2}
 animationDuration={1}
-/>
-      <h1>Welcome to the App!</h1>
+/> */}
       <Header />
       <Hero />
       <Modal />

@@ -10,12 +10,12 @@ const Cards = () => {
     const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
 
-    return <div>Cards Component
+    return (<div className="container">Cards Component
       <p>cards api: https://api.openweathermap.org/data/2.5/weather?q=Rzeszow&units=metric&APPID=17901880cf618f6a938a98535f079158</p>
       <svg>
         <use href={refrehsvg}></use>
       </svg>
       <img src={iconUrl} alt="Weather Icon" />
-  </div>;
+  </div>)
 };
 export default Cards;

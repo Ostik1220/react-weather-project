@@ -1,0 +1,30 @@
+.header{
+    display: flex;
+    height: 80px;
+    align-items: center;
+}
+
+.logo{
+    width: 82px;
+height: 56px;
+}
+
+.list{
+    display: flex;
+    gap: 42px;
+    margin-left: 111px;
+}
+
+.itemLink{
+    font-family: "Montserrat Alternates";
+font-weight: 500;
+font-size: 12px;
+color: #000;
+}
+
+.userBox{
+    display: flex;
+    align-items: center;
+    gap: 27px;
+    margin-left: 519px;
+}
