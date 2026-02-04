@@ -1,9 +1,11 @@
 import Button from '@mui/material/Button';
+import style from '../css/modal.module.css';
 
 
 const Modal = () => {
-  return <div className="backdrop">
-    <div><h2>Sign up</h2>
+  return <div className={style.backdrop}>
+    <div className={style.modal}>
+      <h2 className={style.title}>Sign up</h2>
     <form action="">
       <ul>
         <li>
