@@ -27,6 +27,7 @@ const WeatherTheme = createTheme({
         },
       ],
     },
+    
   },
 
   palette: {

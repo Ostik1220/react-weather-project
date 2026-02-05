@@ -1,0 +1,78 @@
+.heroBackground{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.48)), url('../img/hero-background.png');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 595px;
+          font-family: "Montserrat";
+
+}
+
+.hero{
+        padding: 100px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+font-weight: 600;
+font-size: 40px;
+color: #fff;
+}
+
+.box{
+height: 144px;
+display: flex;
+gap: 52px;
+margin-left: 173px;
+justify-content: start;
+align-items: flex-start;
+align-self: stretch;
+}
+
+.text{
+font-weight: 500;
+font-size: 24px;
+color: #fff;
+line-height: 1.1;
+}
+
+
+
+.line{
+    border: 2px solid #fff;
+height: 144px;
+}
+
+.form{
+    border-radius: 10px;
+width: 625px;
+height: 42px;
+background: #d9d9d9;
+}
+
+.input{
+    border-radius: 10px;
+max-width: 580px;
+width: 100%;
+height: 42px;
+font-weight: 500;
+font-size: 14px;
+color: #878787;
+padding: 13px 29px;
+}
+
+.svg{
+width: 25px;
+height: 25px;
+}
+
+.button{
+border-left: 2px solid #000;
+border-radius: 0 10px 10px 0;
+width: 45px;
+height: 42px;
+}
