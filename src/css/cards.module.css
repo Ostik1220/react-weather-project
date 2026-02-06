@@ -1,0 +1,104 @@
+.cards{
+    margin-top: 60px;
+    margin-bottom: 80px;
+}
+
+.cardsContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card{
+    border-radius: 20px;
+width: 320px;
+height: 430px;
+background: #e8e8e8;
+padding: 15px 20px 21px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.position{
+    width: 260px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.img{
+    width: 120px;
+height: 120px;
+}
+
+.city{
+    font-family: "Montserrat";
+font-weight: 500;
+font-size: 14px;
+color: #000;
+display: block;
+}
+
+.country{
+    font-family: "Montserrat";
+font-weight: 500;
+font-size: 14px;
+text-align: right;
+color: #000;
+display: block;
+}
+
+.dateContainer{
+    width: 135px;
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.time{
+    font-family: "Montserrat";
+font-weight: 500;
+font-size: 24px;
+color: #000;
+}
+
+.date{
+    font-family: "Montserrat";
+font-weight: 500;
+font-size: 14px;
+text-align: right;
+color: #000;
+}
+
+.weekday{
+    font-family: "Montserrat";
+font-weight: 500;
+font-size: 14px;
+color: #000;
+}
+
+.temperature{
+    font-family: "Montserrat";
+font-weight: 500;
+font-size: 32px;
+color: #000;
+margin-bottom: 39px;
+}
+
+.svg{
+    width: 30px;
+height: 30px;
+}
+
+.divider{
+    background: #000;
+width: 2px;
+height: 17px;
+}
+
+.vidgets{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}

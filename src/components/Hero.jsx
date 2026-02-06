@@ -3,6 +3,12 @@ import glass from '../img/search.svg';
 import Button from '@mui/material/Button';
 
 const Hero = () => {
+
+const day = new Date().getDate();
+const month = new Date().toLocaleString('en-US', { month: 'long' });
+const year = new Date().getFullYear();
+const weekday = new Date().toLocaleString('en-US', { weekday: 'long' });
+
   return (
     <div className={style.heroBackground}>
       <div className={`container ${style.hero}`}>
@@ -17,9 +23,9 @@ const Hero = () => {
           </p>
           <div className={style.line}></div>
           <p className={style.text} style={{ textAlign: 'left' }}>
-            October 2023
+            {month} {year}
             <br />
-            Friday, 13th
+            {weekday}, {day}th
           </p>
         </div>
         <form action="" className={style.form}>
