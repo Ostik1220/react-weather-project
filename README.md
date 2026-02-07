@@ -1,5 +1,5 @@
 # Які бібліотеки використовувалися
-React, react-icons, react-toastify, react-icons, chart.js, react-loader-spinner, material-ui
+React, react-icons, react-toastify, react-icons, victory chart, react-loader-spinner, material-ui
 
 # API
 nature api: https://pixabay.com/api/?q=$nature&page=$1&key=50843029-710c41440238bfac4a870a64c&image_type=photo&orientation=horizontal&per_page=5

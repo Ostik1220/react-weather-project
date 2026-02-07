@@ -13,7 +13,7 @@ const Cards = () => {
     const fetchWeather = async () => {
       try {
         const res = await fetch(
-          'https://api.openweathermap.org/data/2.5/weather?q=Kyiv&units=metric&APPID=17901880cf618f6a938a98535f079158'
+          'https://api.openweathermap.org/data/2.5/weather?q=Lviv&units=metric&APPID=17901880cf618f6a938a98535f079158'
         );
 
         if (!res.ok) {
