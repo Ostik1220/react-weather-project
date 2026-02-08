@@ -19,7 +19,7 @@ const hours = [
 
 const data = hours.map((_, i) => ({
   x: i,
-  y: Math.random() * 20 + 5, // приклад
+  y: Math.random() * 20 + 5, 
 }));
 
 
@@ -27,9 +27,11 @@ const data = hours.map((_, i) => ({
     <div className={styles.dayForecast}>
       <h2 className={styles.title}>Hourly forecast</h2>
        <VictoryChart
+       width={1055}
+       height={448}
   theme={VictoryTheme.clean}
   domain={{
-    y: [25, 5], 
+    y: [5, 25], 
   }}
 >
 
@@ -63,7 +65,7 @@ const data = hours.map((_, i) => ({
     data={data}
     style={{
       data: {
-        stroke: "#3b82f6",
+        stroke: "#FFB36C",
         strokeWidth: 2,
       },
     }}
