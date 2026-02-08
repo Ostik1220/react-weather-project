@@ -33,7 +33,7 @@ const Cards = () => {
   }, []);
 
   useEffect(() => {
-    console.log('data changed:', data);
+    console.log(data);
   }, [data]);
 
   const city = data && data.name ? data.name : '';
@@ -48,7 +48,6 @@ const Cards = () => {
       : undefined;
 
   const needDate = useDateByTimezone(timezoneOffset);
-  console.log('Need date:', needDate);
   const time = needDate.toLocaleTimeString('ua-UA', {
     hour: '2-digit',
     minute: '2-digit',
