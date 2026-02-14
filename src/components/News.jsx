@@ -1,48 +1,53 @@
-const News = () => {
-  useEffect(() => {
-      const fetchNews = async () => {
-        try {
-          const res = await fetch(
-            'https://newsapi.org/v2/everything?q=pets&from=2026-01-02&sortBy=publishedAt&apiKey=c84034d791c44ae78c99f5457ea64f3f'
-          );
-  
-          if (!res.ok) {
-            console.error('errore');
-            return;
-          }
-  
-          const json = await res.json();
-          console.log(json);
-          setData(json);
-        } catch (err) {
-          console.error(err);
-        }
-      };
-  
-      fetchNews();
-    }, []);
-  
+import { useEffect, useState } from 'react';
+import style from '../css/news.module.css';
+import Button from '@mui/material/Button';
 
-  return <div className="container">
-    <h2>Interacting with our pets</h2>
-    <ul>
-      <li>
-        <img src="" alt="" />
-        <p></p>
-      </li>
-      <li>
-        <img src="" alt="" />
-        <p></p>
-      </li>
-      <li>
-        <img src="" alt="" />
-        <p></p>
-      </li>
-      <li>
-        <img src="" alt="" />
-        <p></p>
-      </li>
-    </ul>
-  </div>;
+const News = () => {
+const [list, setList] = useState([]);
+const [page, setPage] = useState(4);
+
+useEffect(() => {
+  const fetchNews = async () => {
+    try {
+      const res = await fetch(
+        `https://pixabay.com/api/?q=$pets&page=$1&key=50843029-710c41440238bfac4a870a64c&image_type=photo&orientation=horizontal&per_page=${page}&page=1`
+      );
+
+      if (!res.ok) {
+        console.error('error');
+        return;
+      }
+
+      const json = await res.json();
+      console.log(json)
+      const data = json.hits
+      setList(data.map(article => (
+  <li className={style.item} >
+    <img src={article.webformatURL} alt={article.title} className={style.img} />
+    <p className={style.text}>This is photo about {article.tags} by {article.user}</p>
+  </li>
+)));
+
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  fetchNews();
+}, []);
+
+  return (
+    <div className={style.news}>
+      <div className={`container ${style.newsContainer}`}>
+        <h2 className={style.title}>Interacting with our pets</h2>
+        <ul className={style.list}>
+          {list}
+        </ul>
+        <Button variant="contained" color="default"   onClick={() => setPage(prev => prev + 4)}>
+          See more
+        </Button>
+      </div>
+    </div>
+  );
 };
 export default News;

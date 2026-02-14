@@ -30,7 +30,7 @@ animationDuration={1}
       <Cards />
       <DetailedInfo />
       <DayForecast />
-      <WeekForecast />
+      {/* <WeekForecast /> */}
       <News />
       <Nature />
       <Footer />

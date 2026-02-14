@@ -22,19 +22,17 @@ const Cards = () => {
         }
 
         const json = await res.json();
-        console.log(json);
+        // console.log(json);
         setData(json);
       } catch (err) {
-        console.error(err);
+        // console.error(err);
       }
     };
 
     fetchWeather();
   }, []);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+
 
   const city = data && data.name ? data.name : '';
 
