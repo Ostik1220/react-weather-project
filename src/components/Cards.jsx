@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useDateByTimezone from '../hooks';
+import {useDateByTimezone} from '../hooks';
 import refrehsvg from '../img/refresh.svg';
 import heartsvg from '../img/heart.svg';
 import deletesvg from '../img/delete.svg';
@@ -31,8 +31,6 @@ const Cards = () => {
 
     fetchWeather();
   }, []);
-
-
 
   const city = data && data.name ? data.name : '';
 
@@ -68,9 +66,29 @@ const Cards = () => {
             <h2 className={style.country}>{country}</h2>
           </div>
           <p className={style.time}>{time}</p>
-          <Button variant="contained" color="default">
-            Hourly forecast
-          </Button>
+          <div className={style.buttons}>
+            <Button variant="contained" color="default"
+            sx={{
+              width: '117px',
+              height: '28px',
+              fontWeight: '500',
+              fontSize: "10px",
+              padding:'8px 8px'
+            }}>
+              Hourly forecast
+            </Button>
+
+            <Button variant="contained" color="default"
+            sx={{
+              width: '117px',
+              height: '28px',
+              fontWeight: '500',
+              fontSize: "10px",
+              padding:'8px 8px'
+            }}>
+              Weekly forecast
+            </Button>
+          </div>
 
           <div className={style.dateContainer}>
             <p className={style.date}>{date}</p>
