@@ -26,14 +26,14 @@ animationDuration={1}
 /> */}
       <Header />
       <Hero />
-      {/* <Modal />
+      <Modal />
       <Cards />
       <DetailedInfo />
       <DayForecast />
       <WeekForecast />
       <News />
       <Nature />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 };

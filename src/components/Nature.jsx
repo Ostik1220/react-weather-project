@@ -31,7 +31,7 @@ const Nature = () => {
   }, []);
 
   return (
-    <div className={style.news}>
+    <div className={style.nature}>
       <div className={`container ${style.natureContainer}`}>
         <h2 className={style.title}>Beautiful nature</h2>
 
