@@ -56,3 +56,24 @@ input {
   padding-right: 150px; */
   }
 }
+
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-bottom: 40px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 384px;
+  height: 211px;
+}
+
+.custom-slide img {
+  width: 384px;
+  height: 211px;
+  object-fit: cover;
+  border-radius: 12px;
+}

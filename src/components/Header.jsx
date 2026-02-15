@@ -8,7 +8,6 @@ const Header = () => {
   return (
     <div className="container">
       <div className={styles.header}>
-        {/* <TiArrowSortedDown size={24} color="black" /> */}
         <img src={logo} alt="Logo" className={styles.logo} />
         <ul className={styles.list}>
           <li>
@@ -31,10 +30,23 @@ const Header = () => {
           <Button
             variant="contained"
             color="default"
+            sx={{
+              '@media (min-width:768px)': {
+      borderRadius: '10px',
+      padding: '0px 0px',
+      width: 73,
+      height: 28,
+      fontSize: "10px"
+    },
+            }}
           >
             Sign Up
           </Button>
-          <img src={user} alt="User" />
+          <img src={user} alt="User" className={styles.user}/>
+        </div>
+        <div className={styles.mobMenu}>
+                <p className={styles.textMenu}>Menu</p>
+        <TiArrowSortedDown size={24} color="black" className={styles.arrow}/>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import style from '../css/news.module.css';
 import Button from '@mui/material/Button';
 
+
 const News = () => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
@@ -48,7 +49,7 @@ const News = () => {
             <li className={style.item} key={article.id}>
               <img src={article.webformatURL} alt={article.tags} className={style.img} />
               <p className={style.text}>
-                This is photo about {article.tags} by {article.user}
+                This is photo of {article.tags} by {article.user}
               </p>
             </li>
           ))}

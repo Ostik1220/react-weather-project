@@ -128,51 +128,29 @@ const Cards = () => {
             <h2 className={style.country}>{country}</h2>
           </div>
           <p className={style.time}>{time}</p>
-          <Button variant="contained" color="default">
-            Hourly forecast
-          </Button>
-
-          <div className={style.dateContainer}>
-            <p className={style.date}>{date}</p>
-            <div className={style.divider}></div>
-            <p className={style.weekday}>{weekday}</p>
-          </div>
-          {icon && (
-            <img
-              src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-              alt="Weather Icon"
-              className={style.img}
-            />
-          )}
-
-          <h2 className={style.temperature}>
-            {data && data.main ? `${Math.round(data.main.temp)}°C` : ''}
-          </h2>
-
-          <div className={style.vidgets}>
-            <svg className={style.svg}>
-              <use href={refrehsvg}></use>
-            </svg>
-            <svg className={style.svg}>
-              <use href={heartsvg}></use>
-            </svg>
-            <Button variant="contained" color="default">
-              See more
+          <div className={style.buttons}>
+            <Button variant="contained" color="default"
+            sx={{
+              width: '117px',
+              height: '28px',
+              fontWeight: '500',
+              fontSize: "10px",
+              padding:'8px 8px'
+            }}>
+              Hourly forecast
             </Button>
-            <svg className={style.svg}>
-              <use href={deletesvg}></use>
-            </svg>
+
+            <Button variant="contained" color="default"
+            sx={{
+              width: '117px',
+              height: '28px',
+              fontWeight: '500',
+              fontSize: "10px",
+              padding:'8px 8px'
+            }}>
+              Weekly forecast
+            </Button>
           </div>
-        </div>
-        <div className={style.card}>
-          <div className={style.position}>
-            <h2 className={style.city}>{city}</h2>
-            <h2 className={style.country}>{country}</h2>
-          </div>
-          <p className={style.time}>{time}</p>
-          <Button variant="contained" color="default">
-            Hourly forecast
-          </Button>
 
           <div className={style.dateContainer}>
             <p className={style.date}>{date}</p>

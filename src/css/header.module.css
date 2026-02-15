@@ -1,38 +1,130 @@
-.header{
-    display: flex;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  @media screen and (min-width: 768px) {
+    visibility: visible;
+    height: 70px;
+  }
+  @media screen and (min-width: 1200px) {
     height: 80px;
-    align-items: center;
+  }
 }
 
-.logo{
+.arrow {
+        visibility: visible;
+        height: 9px;
+        width: auto;
+  @media screen and (min-width: 768px) {
+
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.logo {
+  width: 34px;
+  height: 22px;
+  @media screen and (min-width: 768px) {
+    visibility: visible;
+    width: 54px;
+    height: 36px;
+  }
+  @media screen and (min-width: 1200px) {
     width: 82px;
-height: 56px;
+    height: 56px;
+  }
 }
 
-.list{
+.list {
+  display: none;
+  visibility: hidden;
+
+  @media screen and (min-width: 768px) {
+    visibility: visible;
     display: flex;
     gap: 42px;
+    margin-left: 57px;
+  }
+  @media screen and (min-width: 1200px) {
     margin-left: 111px;
+  }
 }
 
-.itemLink{
-    font-family: "Montserrat Alternates";
-font-weight: 500;
-font-size: 12px;
-color: #000;
-transition-duration: 250ms;
-
-}
-
-.itemLink:hover{
-    color: #E4E4E4;
+.itemLink {
+  display: none;
+  visibility: hidden;
+  @media screen and (min-width: 768px) {
+    display: block;
+    visibility: visible;
+    font-family: 'Montserrat Alternates';
+    font-weight: 500;
+    font-size: 10px;
+    color: #000;
     transition-duration: 250ms;
-    border-bottom: #E4E4E4 2px solid;
+  }
+  @media screen and (min-width: 1200px) {
+    font-size: 12px;
+  }
 }
 
-.userBox{
-    display: flex;
-    align-items: center;
-    gap: 27px;
-    margin-left: 519px;
+.itemLink:hover {
+  color: #e4e4e4;
+  transition-duration: 250ms;
+  border-bottom: #e4e4e4 2px solid;
+}
+
+.userBox {
+    visibility: hidden;
+    display: none;
+  @media screen and (min-width: 768px) {
+    visibility: visible;
+    margin-left: 153px;
+    gap: 25px;
+      display: flex;
+  align-items: center;
+  }
+      @media screen and (min-width: 1200px) {
+   gap: 27px;
+  margin-left: 519px;
+  }
+}
+
+.user {
+  @media screen and (min-width: 768px) {
+    visibility: visible;
+    height: 40px;
+    width: 40px;
+  }
+  @media screen and (min-width: 1200px) {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.mobMenu{
+            visibility: visible;
+        width: auto;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+  @media screen and (min-width: 768px) {
+
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.textMenu{
+                visibility: visible;
+                font-family: "Montserrat Alternates";
+font-weight: 500;
+font-size: 10px;
+color: #000;
+  @media screen and (min-width: 768px) {
+
+    display: none;
+    visibility: hidden;
+  }
 }
