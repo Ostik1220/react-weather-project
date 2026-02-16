@@ -1,6 +1,5 @@
 import Header from 'components/Header';
 import Hero from 'components/Hero';
-import Modal from 'components/Modal';
 import Cards from 'components/Cards';
 import DetailedInfo from 'components/DetailedInfo';
 import WeekForecast from 'components/WeekForecast';
@@ -26,8 +25,7 @@ animationDuration={1}
 /> */}
       <Header />
       <Hero />
-      {/* <Modal />
-      <Cards />
+      {/* <Cards />
       <DetailedInfo />
       <DayForecast />
       <WeekForecast />

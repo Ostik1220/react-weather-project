@@ -15,10 +15,21 @@ const Hero = () => {
   const year = new Date().getFullYear();
   const weekday = new Date().toLocaleString('en-US', { weekday: 'long' });
 
-const theme = useTheme();
 
-const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
-const isLaptop = useMediaQuery(theme.breakpoints.between('md', 'lg'));
+const isDesktop = useMediaQuery('(min-width:1200px)');
+const isLaptop = useMediaQuery('(min-width:768px)');
+
+let width = 16;
+let height = 15;
+
+if (isDesktop) {
+  width = 45;
+  height = 42;
+} else if (isLaptop) {
+  width = 28;
+  height = 27;
+}
+
 
 let search;
 
@@ -64,16 +75,8 @@ if (isDesktop) {
   borderRadius: '0 10px 10px 0',
   minWidth: 0,
   padding: 0,
-  width: {
-    xs: '16px',
-    md: '28px',
-    lg: '45px',
-  },
-  height: {
-    xs: '15px',
-    md: '27px',
-    lg: '42px',
-  }
+width: {width},
+  height: {height},
 }}
 
           >
