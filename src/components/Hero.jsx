@@ -1,13 +1,34 @@
 import style from '../css/hero.module.css';
-import glass from '../img/search.svg';
+import glassDesktop from '../img/search-desktop.svg';
+import glassLaptop from '../img/search-laptop.svg'
+import glassPhone from '../img/search-phone.svg'
 import Button from '@mui/material/Button';
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+
+
+
 
 const Hero = () => {
+  const day = new Date().getDate();
+  const month = new Date().toLocaleString('en-US', { month: 'long' });
+  const year = new Date().getFullYear();
+  const weekday = new Date().toLocaleString('en-US', { weekday: 'long' });
 
-const day = new Date().getDate();
-const month = new Date().toLocaleString('en-US', { month: 'long' });
-const year = new Date().getFullYear();
-const weekday = new Date().toLocaleString('en-US', { weekday: 'long' });
+const theme = useTheme();
+
+const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+const isLaptop = useMediaQuery(theme.breakpoints.between('md', 'lg'));
+
+let search;
+
+if (isDesktop) {
+  search = glassDesktop;
+} else if (isLaptop) {
+  search = glassLaptop;
+} else {
+  search = glassPhone;
+}
 
   return (
     <div className={style.heroBackground}>
@@ -17,9 +38,8 @@ const weekday = new Date().toLocaleString('en-US', { weekday: 'long' });
           <p className={style.text} style={{ textAlign: 'right' }}>
             Create your personal list of
             <br />
-             favorite cities and always be
-             <br /> aware of
-            the weather.
+            favorite cities and always be
+            <br /> aware of the weather.
           </p>
           <div className={style.line}></div>
           <p className={style.text} style={{ textAlign: 'left' }}>
@@ -40,16 +60,25 @@ const weekday = new Date().toLocaleString('en-US', { weekday: 'long' });
             variant="contained"
             color="default"
             sx={{
-              borderLeft: '2px solid #000',
-              borderRadius: '0 10px 10px 0',
-              width: '45px',
-              height: '42px',
-              minWidth: 0,
-              padding: 0,
-            }}
+  borderLeft: '2px solid #000',
+  borderRadius: '0 10px 10px 0',
+  minWidth: 0,
+  padding: 0,
+  width: {
+    xs: '16px',
+    md: '28px',
+    lg: '45px',
+  },
+  height: {
+    xs: '15px',
+    md: '27px',
+    lg: '42px',
+  }
+}}
+
           >
             <svg className={style.svg}>
-              <use href={glass}></use>
+              <use href={search}></use>
             </svg>
           </Button>
         </form>
