@@ -18,6 +18,7 @@ const WeatherTheme = createTheme({
         {
           props: { variant: 'contained', color: 'signup' },
           style: {
+            borderRadius: 5,
             backgroundColor: '#ffb36c',
             color: '#000',
             '&:hover': {

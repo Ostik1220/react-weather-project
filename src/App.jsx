@@ -25,13 +25,13 @@ animationDuration={1}
 /> */}
       <Header />
       <Hero />
-      {/* <Cards />
+      <Cards />
       <DetailedInfo />
-      <DayForecast />
-      <WeekForecast />
+      {/* <DayForecast />
+      <WeekForecast /> */}
       <News />
       <Nature />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 };

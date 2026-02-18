@@ -4,8 +4,6 @@ import glassLaptop from '../img/search-laptop.svg'
 import glassPhone from '../img/search-phone.svg'
 import Button from '@mui/material/Button';
 import { useMediaQuery } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-
 
 
 
