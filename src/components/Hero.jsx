@@ -1,6 +1,6 @@
 import style from '../css/hero.module.css';
 import glassDesktop from '../img/search-desktop.svg';
-import glassLaptop from '../img/search-laptop.svg'
+import glassTablet from '../img/search-tablet.svg'
 import glassPhone from '../img/search-phone.svg'
 import Button from '@mui/material/Button';
 import { useMediaQuery } from '@mui/material';
@@ -14,33 +14,25 @@ const Hero = () => {
   const weekday = new Date().toLocaleString('en-US', { weekday: 'long' });
 
 
-const isDesktop = useMediaQuery('(min-width:1200px)');
-const isLaptop = useMediaQuery('(min-width:768px)');
+const isDesktop = useMediaQuery("(min-width: 1200px)");
+const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1199px)");
 
 let width = 16;
 let height = 15;
+let search = glassPhone;
 
 if (isDesktop) {
   width = 45;
   height = 42;
-} else if (isLaptop) {
+  search = glassDesktop;
+} else if (isTablet) {
   width = 28;
   height = 27;
-}
-
-
-let search;
-
-if (isDesktop) {
-  search = glassDesktop;
-} else if (isLaptop) {
-  search = glassLaptop;
-} else {
-  search = glassPhone;
+  search = glassTablet;
 }
 
   return (
-    <div className={style.heroBackground}>
+    <div className={style.heroBackground} id='info'>
       <div className={`container ${style.hero}`}>
         <h1 className={style.title}>Weather dashboard</h1>
         <div className={style.box}>

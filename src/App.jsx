@@ -24,14 +24,14 @@ strokeWidth={2}
 animationDuration={1}
 /> */}
       <Header />
-      <Hero />
-      <Cards />
+      <Hero/>
+      <Cards/>
       <DetailedInfo />
-      {/* <DayForecast />
-      <WeekForecast /> */}
+      <DayForecast />
+      <WeekForecast />
       <News />
       <Nature />
-      <Footer />
+      <Footer/>
     </div>
   );
 };

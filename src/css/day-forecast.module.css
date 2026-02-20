@@ -1,14 +1,29 @@
 .dayForecast{
-    height: 557px;
+    border-radius: 15px;
+    height: 370px;
     background: #e8e8e8;
     border-radius: 20px;
     margin-top: 80px;
+        padding: 18px 25px 24px;
+    @media screen and (min-width: 768px) {
+height: 400px;
+    padding: 20px 37px 26px;
+    }
+        @media screen and (min-width: 1200px) {
+height: 557px;
     padding: 40px;
+    }
 }
 
 .title{
     font-family: "Montserrat";
 font-weight: 600;
-font-size: 16px;
+font-size: 10px;
 color: #000;
+    @media screen and (min-width: 768px) {
+font-size: 12px;
+    }
+        @media screen and (min-width: 1200px) {
+font-size: 16px;
+    }
 }

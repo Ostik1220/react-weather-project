@@ -16,6 +16,7 @@ column-gap: 21px;
   }
   @media screen and (min-width: 1200px) {
 height: 554px;
+justify-content: center;
   }
 }
 

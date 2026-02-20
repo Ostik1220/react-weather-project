@@ -16,6 +16,7 @@
         visibility: visible;
         height: 9px;
         width: auto;
+        transition-duration: 250ms;
   @media screen and (min-width: 768px) {
 
     display: none;
@@ -53,9 +54,6 @@
 }
 
 .itemLink {
-  display: none;
-  visibility: hidden;
-  @media screen and (min-width: 768px) {
     display: block;
     visibility: visible;
     font-family: 'Montserrat Alternates';
@@ -63,16 +61,15 @@
     font-size: 10px;
     color: #000;
     transition-duration: 250ms;
-  }
   @media screen and (min-width: 1200px) {
     font-size: 12px;
   }
 }
 
 .itemLink:hover {
-  color: #e4e4e4;
+  color: #ffb36c;
   transition-duration: 250ms;
-  border-bottom: #e4e4e4 2px solid;
+  border-bottom: #ffb36c 2px solid;
 }
 
 .userBox {
@@ -92,18 +89,16 @@
 }
 
 .user {
-  @media screen and (min-width: 768px) {
     visibility: visible;
     height: 40px;
     width: 40px;
-  }
   @media screen and (min-width: 1200px) {
     height: 50px;
     width: 50px;
   }
 }
 
-.mobMenu{
+.mobInterface{
             visibility: visible;
         width: auto;
         display: flex;
@@ -116,7 +111,7 @@
   }
 }
 
-.textMenu{
+.textInterface{
                 visibility: visible;
                 font-family: "Montserrat Alternates";
 font-weight: 500;
@@ -128,3 +123,95 @@ color: #000;
     visibility: hidden;
   }
 }
+
+
+
+.mobMenu{
+  width: 100%;
+height: 146px;
+    display: flex;
+    align-items: center;
+    background: #e6e6e6;
+    padding:30px 50px;
+    justify-content: space-between;
+    position: absolute;
+    z-index: 3;
+  @media screen and (min-width: 768px) {
+
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.mobItemLink {
+    display: block;
+    visibility: visible;
+    font-family: 'Montserrat Alternates';
+    font-weight: 500;
+    font-size: 10px;
+    color: #000;
+    transition-duration: 250ms;
+
+}
+
+.mobItemLink:hover {
+  color: #e4e4e4;
+  transition-duration: 250ms;
+  border-bottom: #e4e4e4 2px solid;
+}
+
+.mobList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mobUserBox {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-direction: column-reverse;
+}
+
+.itemLinkName{
+      display: block;
+    visibility: visible;
+    font-family: 'Montserrat Alternates';
+    font-weight: 500;
+    font-size: 10px;
+    color: #000;
+    transition-duration: 250ms;
+    cursor: pointer;
+  @media screen and (min-width: 1200px) {
+    font-size: 12px;
+  }
+}
+
+.itemLinkName:hover {
+  color: #ff0000;
+  transition-duration: 250ms;
+  border-bottom: #ff0000 2px solid;
+}
+
+.boxName {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.treshName {
+  width: 15px;
+  height: 15px;
+  visibility: hidden;
+  display: none;
+    transition-duration: 250ms;
+    cursor: pointer;
+}
+
+.boxName:hover .treshName{
+  color: #ff0000;
+  transition-duration: 250ms;
+  visibility: visible;
+  display: block;
+}
+

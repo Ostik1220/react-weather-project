@@ -53,12 +53,12 @@ const Cards = () => {
     .toLocaleDateString('en-US', {
       day: '2-digit',
       month: '2-digit',
-      year: '2-digit',
+      year: 'numeric',
     })
-    .replaceAll('/', ':');
+    .replaceAll('/', '.');
 
   return (
-    <div className={style.cards}>
+    <div className={style.cards} id="menu">
       <div className={`container ${style.cardsContainer}`}>
         <div className={style.card}>
           <div className={style.position}>

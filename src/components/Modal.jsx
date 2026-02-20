@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 import style from '../css/modal.module.css';
 import { useEffect } from "react";
 
-const Modal = ({ open, setOpen }) => {
+const Modal = ({ open, setOpen, onLogin }) => {
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -21,7 +21,6 @@ const Modal = ({ open, setOpen }) => {
   }, [open, setOpen]);
 
   if (!open) return null;
-  console.log(open);
 
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
@@ -29,12 +28,21 @@ const Modal = ({ open, setOpen }) => {
     }
   };
 
+  const localizeUser = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const username = form.username.value;
+
+    localStorage.setItem("User", username);
+    onLogin(username);
+    setOpen(false);
+  };
 
   return (
     <div className={style.backdrop} onClick={handleBackdropClick}>
       <div className={style.modal}>
         <h2 className={style.title}>Sign up</h2>
-        <form action="" className={style.form}>
+        <form className={style.form} onSubmit={localizeUser}>
           <ul className={style.list}>
             <li className={style.item}>
               <label htmlFor="username" className={style.label}>
@@ -84,6 +92,7 @@ const Modal = ({ open, setOpen }) => {
               },
               height: '35px'
             }}
+            type='submit'
           >
             Sign Up
           </Button>

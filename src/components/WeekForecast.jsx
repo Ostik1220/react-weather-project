@@ -45,12 +45,18 @@ if (data?.list) {
 const elements = daily.map(day => {
   const icon = day.weather[0].icon
   const weather = day.weather[0].main
-  const date = day.dt_txt.slice(2, 10).replace("-", ":").replace("-", ":")
-  const temp = day.main.temp + '°C'
+  // const date = day.dt_txt.slice(2, 10).replace("-", ":").replace("-", ":")
+  const date = new Date(day.dt);
 
+const formatted = date.toLocaleDateString("en-US", {
+  weekday: "short",
+  month: "short",
+  day: "numeric",
+});
+  const temp = day.main.temp + '°C'
   return (
     <li key={day.dt} className={style.item}>
-      <p className={style.text}>{date}</p>
+      <p className={style.text}>{formatted}</p>
 
       <div className={style.info}>
         <img
