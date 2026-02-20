@@ -5,7 +5,7 @@ const WeatherTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-        fontFamily: "Montserrat Alternates",
+          fontFamily: 'Montserrat Alternates',
           textTransform: 'none',
           borderRadius: 10,
           fontWeight: 500,
@@ -28,7 +28,6 @@ const WeatherTheme = createTheme({
         },
       ],
     },
-    
   },
 
   palette: {

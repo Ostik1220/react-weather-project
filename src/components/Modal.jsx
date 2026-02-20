@@ -1,39 +1,38 @@
 import Button from '@mui/material/Button';
 import style from '../css/modal.module.css';
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 const Modal = ({ open, setOpen, onLogin }) => {
-
   useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
+    const handleKeyDown = event => {
+      if (event.key === 'Escape') {
         setOpen(false);
       }
     };
 
     if (open) {
-      window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [open, setOpen]);
 
   if (!open) return null;
 
-  const handleBackdropClick = (e) => {
+  const handleBackdropClick = e => {
     if (e.target === e.currentTarget) {
       setOpen(false);
     }
   };
 
-  const localizeUser = (e) => {
+  const localizeUser = e => {
     e.preventDefault();
     const form = e.target;
     const username = form.username.value;
 
-    localStorage.setItem("User", username);
+    localStorage.setItem('User', username);
     onLogin(username);
     setOpen(false);
   };
@@ -90,9 +89,9 @@ const Modal = ({ open, setOpen, onLogin }) => {
                 md: '107px',
                 lg: '114px',
               },
-              height: '35px'
+              height: '35px',
             }}
-            type='submit'
+            type="submit"
           >
             Sign Up
           </Button>

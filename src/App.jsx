@@ -8,11 +8,13 @@ import News from 'components/News';
 import Nature from 'components/Nature';
 import Footer from 'components/Footer';
 import { CircularProgress } from 'react-loader-spinner';
+import { CardsProvider } from 'cardsContent';
 
 export const App = () => {
   return (
     <div>
-      {/* <CircularProgress
+      <CardsProvider>
+        {/* <CircularProgress
 height="100"
 width="100"
 color="#FFB36C"
@@ -23,15 +25,16 @@ visible={true}
 strokeWidth={2}
 animationDuration={1}
 /> */}
-      <Header />
-      <Hero/>
-      <Cards/>
-      <DetailedInfo />
-      <DayForecast />
-      <WeekForecast />
-      <News />
-      <Nature />
-      <Footer/>
+        <Header />
+        <Hero />
+        <Cards />
+        <DetailedInfo />
+        <DayForecast />
+        <WeekForecast />
+        <News />
+        <Nature />
+        <Footer />
+      </CardsProvider>
     </div>
   );
 };

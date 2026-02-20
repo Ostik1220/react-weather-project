@@ -1,49 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext, memo } from 'react';
+import { CardsContext } from '../cardsContent';
+import { Button } from '@mui/material';
 import { useDateByTimezone } from '../hooks';
 import refrehsvg from '../img/refresh.svg';
 import hearthsvg from '../img/heart.svg';
 import deletesvg from '../img/delete.svg';
 import style from '../css/cards.module.css';
-import { Button } from '@mui/material';
 
-const Cards = () => {
-  const [data, setData] = useState(null);
+const CardItem = memo(({ card }) => {
+  const { deleteCard, setSignal } = useContext(CardsContext);
+  const [render, setRender] = useState(1);
 
-  useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        const res = await fetch(
-          'https://api.openweathermap.org/data/2.5/weather?q=Lviv&units=metric&APPID=17901880cf618f6a938a98535f079158'
-        );
-
-        if (!res.ok) {
-          console.error('errore');
-          return;
-        }
-
-        const json = await res.json();
-        // console.log(json);
-        setData(json);
-      } catch (err) {
-        // console.error(err);
-      }
-    };
-
-    fetchWeather();
-  }, []);
-
-  const city = data && data.name ? data.name : '';
-
-  const timezoneOffset = data && data.timezone ? data.timezone : 0;
-
-  const country = data && data.sys && data.sys.country ? data.sys.country : '';
-
-  const icon =
-    data && data.weather && data.weather[0] && data.weather[0].icon
-      ? data.weather[0].icon
-      : undefined;
-
+  const timezoneOffset = card.context?.timezone ?? 0;
   const needDate = useDateByTimezone(timezoneOffset);
+
+  const city = card.city;
+  const country = card.context?.sys?.country;
+  const icon = card.context?.weather?.[0]?.icon;
+  const temp = card.context?.main?.temp;
+
   const time = needDate.toLocaleTimeString('ua-UA', {
     hour: '2-digit',
     minute: '2-digit',
@@ -58,100 +33,169 @@ const Cards = () => {
     .replaceAll('/', '.');
 
   return (
-    <div className={style.cards} id="menu">
+    <div className={style.card}>
+      <div className={style.position}>
+        <h2 className={style.city}>{city}</h2>
+        <h2 className={style.country}>{country}</h2>
+      </div>
+      <p className={style.time}>{time}</p>
+      <div className={style.buttons}>
+        <Button
+          variant="contained"
+          color="default"
+          sx={{
+            padding: '8px 18px',
+            width: '96px',
+            height: '23px',
+            fontSize: '9px',
+            padding: '6px 8px',
+            '@media (min-width:1200px)': {
+              width: '117px',
+              height: '28px',
+              fontWeight: '500',
+              fontSize: '10px',
+              padding: '8px 8px',
+            },
+          }}
+          onClick={() => {
+            setSignal({
+              cod: 1,
+              city: city,
+            });
+          }}
+        >
+          Hourly forecast
+        </Button>
+
+        <Button
+          variant="contained"
+          color="default"
+          sx={{
+            padding: '8px 18px',
+            width: '96px',
+            height: '23px',
+            fontSize: '9px',
+            padding: '6px 8px',
+            '@media (min-width:1200px)': {
+              width: '117px',
+              height: '28px',
+              fontWeight: '500',
+              fontSize: '10px',
+              padding: '8px 8px',
+            },
+          }}
+          onClick={() => {
+            setSignal({
+              cod: 2,
+              city: city,
+            });
+          }}
+        >
+          Weekly forecast
+        </Button>
+      </div>
+
+      <div className={style.dateContainer}>
+        <p className={style.date}>{date}</p>
+        <div className={style.divider}></div>
+        <p className={style.weekday}>{weekday}</p>
+      </div>
+      {icon && (
+        <img
+          src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+          alt="Weather Icon"
+          className={style.img}
+        />
+      )}
+
+      <h2 className={style.temperature}>
+        {temp ? `${Math.round(temp)}°C` : 'Loading...'}
+      </h2>
+
+      <div className={style.vidgets}>
+        <img
+          src={refrehsvg}
+          alt=""
+          className={style.svg}
+          onClick={() => {
+            setRender(render + 1);
+            setSignal('await');
+          }}
+        />
+        <img src={hearthsvg} alt="" className={style.svg} />
+        <Button
+          variant="contained"
+          color="default"
+          sx={{
+            '@media (max-width:1200px)': {
+              fontSize: '9px',
+              padding: '6px 13px',
+              width: '81px',
+              height: '23px',
+              margin: '',
+            },
+          }}
+          onClick={() => {
+            setSignal({
+              cod: 3,
+              city: city,
+            });
+          }}
+        >
+          See more
+        </Button>
+        <img
+          src={deletesvg}
+          alt=""
+          className={style.svg}
+          onClick={() => {
+            deleteCard(city);
+            setSignal('await');
+          }}
+        />
+      </div>
+    </div>
+  );
+});
+
+const Cards = () => {
+  const { cards, addCard, signal, setSignal } = useContext(CardsContext);
+
+  useEffect(() => {
+    if (signal !== 'load') return;
+
+    const lastCard = cards[cards.length - 1];
+    if (!lastCard) return;
+
+    const fetchWeather = async () => {
+      try {
+        const res = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${lastCard.city}&units=metric&APPID=17901880cf618f6a938a98535f079158`
+        );
+
+        if (!res.ok) return;
+
+        const json = await res.json();
+        addCard(json);
+        setSignal('await');
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchWeather();
+  }, [signal, cards, addCard]);
+const cardsVisibility = cards.length > 0 ? style.cards : style.invisible;
+console.log(cardsVisibility);
+  return (
+    <div className={cardsVisibility} id="menu">
       <div className={`container ${style.cardsContainer}`}>
-        <div className={style.card}>
-          <div className={style.position}>
-            <h2 className={style.city}>{city}</h2>
-            <h2 className={style.country}>{country}</h2>
-          </div>
-          <p className={style.time}>{time}</p>
-          <div className={style.buttons}>
-            <Button
-              variant="contained"
-              color="default"
-              sx={{
-                  padding: '8px 18px',
-                  width: '96px',
-                  height: '23px',
-                  fontSize: "9px",
-                  padding: '6px 8px',
-                                '@media (min-width:1200px)': {
-
-
-                                  width: '117px',
-                height: '28px',
-                fontWeight: '500',
-                fontSize: '10px',
-                padding: '8px 8px',
-                }
-              }}
-            >
-              Hourly forecast
-            </Button>
-
-            <Button
-              variant="contained"
-              color="default"
-              sx={{
-                  padding: '8px 18px',
-                  width: '96px',
-                  height: '23px',
-                  fontSize: "9px",
-                  padding: '6px 8px',
-                '@media (min-width:1200px)': {
-
-
-                                  width: '117px',
-                height: '28px',
-                fontWeight: '500',
-                fontSize: '10px',
-                padding: '8px 8px',
-                }
-              }}
-            >
-              Weekly forecast
-            </Button>
-          </div>
-
-          <div className={style.dateContainer}>
-            <p className={style.date}>{date}</p>
-            <div className={style.divider}></div>
-            <p className={style.weekday}>{weekday}</p>
-          </div>
-          {icon && (
-            <img
-              src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-              alt="Weather Icon"
-              className={style.img}
-            />
-          )}
-
-          <h2 className={style.temperature}>
-            {data && data.main ? `${Math.round(data.main.temp)}°C` : ''}
-          </h2>
-
-          <div className={style.vidgets}>
-            <img src={refrehsvg} alt="" className={style.svg}/>
-            <img src={hearthsvg} alt="" className={style.svg}/>
-            <Button variant="contained" color="default"
-            sx={{
-'@media (max-width:1200px)': {
-  fontSize: "9px",
-padding: "6px 13px",
-width: "81px",
-height:"23px",
-margin: ""
-                }
-            }}>
-              See more
-            </Button>
-            <img src={deletesvg} alt="" className={style.svg}/>
-
-          </div>
-        </div>
+        {cards.map((card, index) => (
+          <CardItem key={index} card={card} />
+        ))}
       </div>
     </div>
   );
 };
+
 export default Cards;

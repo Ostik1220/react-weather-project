@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 export function useDateByTimezone(offsetSeconds) {
   const now = Date.now();
@@ -17,9 +17,9 @@ export function useMediaQuery(query) {
     const listener = () => setMatches(media.matches);
 
     listener();
-    media.addEventListener("change", listener);
+    media.addEventListener('change', listener);
 
-    return () => media.removeEventListener("change", listener);
+    return () => media.removeEventListener('change', listener);
   }, [query]);
 
   return matches;

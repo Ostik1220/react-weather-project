@@ -6,7 +6,7 @@ import style from '../css/footer.module.css';
 
 const Footer = () => {
   return (
-    <footer className={style.footer}  id="footer">
+    <footer className={style.footer} id="footer">
       <div className={`container ${style.footerContainer}`}>
         <div className={style.box}>
           <img src={logo} alt="Logo" className={style.logo} />

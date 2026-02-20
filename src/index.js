@@ -8,10 +8,10 @@ import CssBaseline from '@mui/material/CssBaseline';
 import WeatherTheme from './mui-theme';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <ThemeProvider theme={WeatherTheme}>
-  <CssBaseline />
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-   </ThemeProvider>
+  <ThemeProvider theme={WeatherTheme}>
+    <CssBaseline />
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </ThemeProvider>
 );

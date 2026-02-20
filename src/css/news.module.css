@@ -1,46 +1,46 @@
-.news{
-    display: none;
-    visibility: hidden;
+.news {
+  display: none;
+  visibility: hidden;
   @media screen and (min-width: 1200px) {
     margin-bottom: 80px;
     margin-top: 80px;
-                visibility: visible;
-        width: auto;
-        display: block;
+    visibility: visible;
+    width: auto;
+    display: block;
   }
 }
 
-.img{
-    border-radius: 10px;
-min-width: 270px;
-height: 208px;
+.img {
+  border-radius: 10px;
+  min-width: 270px;
+  height: 208px;
 }
 
-.title{
-    font-family: 'Montserrat';
-font-weight: 500;
-font-size: 20px;
-color: #000;
-margin-bottom: 40px;
+.title {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 40px;
 }
 
-.list{
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+.list {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-.item{
-    display: flex;
-    flex-direction: column;
-    width: 270px;
-    gap: 20px;
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  gap: 20px;
 }
 
-.text{
-    font-family:"Montserrat";
-font-weight: 500;
-font-size: 16px;
-color: #000;
+.text {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 16px;
+  color: #000;
 }

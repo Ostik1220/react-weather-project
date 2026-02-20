@@ -3,11 +3,13 @@
   height: 212px;
   display: flex;
   align-items: center;
-  margin-top: 50px;
+
   @media screen and (min-width: 768px) {
-    height: 138px;
+    min-height: 163px;
+    height: 100%;
   }
   @media screen and (min-width: 1200px) {
+      margin-top: 50px;
     height: 179px;
   }
 }
@@ -15,13 +17,13 @@
 .footerContainer {
   display: flex;
   align-items: flex-end;
-    flex-wrap: wrap;
-    column-gap: 75px;
-    row-gap: 25px;
-    justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 75px;
+  row-gap: 25px;
+  justify-content: center;
 
-      @media screen and (min-width: 768px) {
-        justify-content: flex-start;
+  @media screen and (min-width: 768px) {
+    justify-content: flex-start;
   }
 }
 
@@ -42,16 +44,16 @@
   display: flex;
   flex-direction: column;
   margin: 0 103px;
-width: 67px;
-height: 60px;
+  width: 67px;
+  height: 60px;
 
   @media screen and (min-width: 768px) {
-width: 80px;
-height: 68px;
+    width: 80px;
+    height: 68px;
   }
   @media screen and (min-width: 1200px) {
-width: 100px;
-height: 75px;
+    width: 100px;
+    height: 75px;
   }
 }
 
@@ -61,12 +63,12 @@ height: 75px;
   font-size: 12px;
   color: #000;
   margin-bottom: 15px;
-    @media screen and (min-width: 768px) {
-font-size: 14px;
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
   }
   @media screen and (min-width: 1200px) {
-font-size: 16px;
-margin-bottom: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
   }
 }
 
@@ -75,8 +77,8 @@ margin-bottom: 10px;
   font-weight: 500;
   font-size: 8px;
   color: #000;
-    @media screen and (min-width: 768px) {
-        font-size: 10px;
+  @media screen and (min-width: 768px) {
+    font-size: 10px;
   }
   @media screen and (min-width: 1200px) {
     font-size: 12px;
@@ -87,20 +89,20 @@ margin-bottom: 10px;
   width: 35px;
   height: 35px;
   transition-duration: 250ms;
-    &:hover {
-        transform: scale(1.1);
-    }
-     @media screen and (min-width: 1200px) {
-        width: 40px;
-        height: 40px;
-    }
+  &:hover {
+    transform: scale(1.1);
+  }
+  @media screen and (min-width: 1200px) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .socialBox {
-    margin-top: 25px;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
   @media screen and (min-width: 768px) {
     align-items: flex-start;
     margin-bottom: 0px;
@@ -112,6 +114,6 @@ margin-bottom: 10px;
   gap: 20px;
 }
 
-.box{
-    display: flex;
+.box {
+  display: flex;
 }

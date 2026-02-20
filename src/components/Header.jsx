@@ -1,21 +1,23 @@
 import { TiArrowSortedDown } from 'react-icons/ti';
-import { IoTrashBin } from "react-icons/io5";
+import { IoTrashBin } from 'react-icons/io5';
 import Button from '@mui/material/Button';
 import logo from '../img/logo.png';
 import user from '../img/user.png';
 import styles from '../css/header.module.css';
 import Modal from './Modal.jsx';
-import { useState} from 'react';
+import { useState } from 'react';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [mobOpen, setMobOpen] = useState(false);
   const [userName, setUserName] = useState(localStorage.User || null);
 
-  let mobileMenu = null
+  let mobileMenu = null;
   const rotate = e => {
     setMobOpen(prev => !prev);
-    e.currentTarget.style.transform = mobOpen ? 'rotate(0deg)' : 'rotate(-90deg)';
+    e.currentTarget.style.transform = mobOpen
+      ? 'rotate(0deg)'
+      : 'rotate(-90deg)';
   };
 
   const resetLoginisation = () => {
@@ -23,11 +25,12 @@ const Header = () => {
     setUserName(null);
   };
 
-  const loginisation = userName ? (<div className={styles.boxName}>
-        <IoTrashBin className={styles.treshName} onClick={resetLoginisation}/>
-    <a className={styles.itemLinkName} onClick={resetLoginisation}>
-     {userName}
-    </a>
+  const loginisation = userName ? (
+    <div className={styles.boxName}>
+      <IoTrashBin className={styles.treshName} onClick={resetLoginisation} />
+      <a className={styles.itemLinkName} onClick={resetLoginisation}>
+        {userName}
+      </a>
     </div>
   ) : (
     <Button
@@ -87,7 +90,7 @@ const Header = () => {
           </li>
         </ul>
         <div className={styles.mobUserBox}>
-{loginisation}
+          {loginisation}
           <img src={user} alt="User" className={styles.user} />
         </div>
       </div>
@@ -120,10 +123,15 @@ const Header = () => {
             {loginisation}
             <img src={user} alt="User" className={styles.user} />
           </div>
-                  <div className={styles.mobInterface}>
-          <p className={styles.textInterface}>Menu</p>
-          <TiArrowSortedDown size={24} color="black" className={styles.arrow} onClick={rotate}/>
-        </div>
+          <div className={styles.mobInterface}>
+            <p className={styles.textInterface}>Menu</p>
+            <TiArrowSortedDown
+              size={24}
+              color="black"
+              className={styles.arrow}
+              onClick={rotate}
+            />
+          </div>
         </div>
         <Modal open={open} setOpen={setOpen} onLogin={setUserName} />
       </div>

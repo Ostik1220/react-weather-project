@@ -1,51 +1,47 @@
 import style from '../css/week-forecast.module.css'
 import { useEffect, useState } from 'react';
+import { CardsContext } from '../cardsContent';
+import { useContext } from 'react';
 
 
 const WeekForecast = () => {
-const [data, setData] = useState(null)
-  
+      const {signal} = useContext(CardsContext)
+      const [data, setData] = useState(null)
 useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        const res = await fetch(
-'https://api.openweathermap.org/data/2.5/forecast?q=Lviv&units=metric&APPID=17901880cf618f6a938a98535f079158'
-        );
+  if (!signal?.city) return; 
+  const fetchWeather = async () => {
+    try {
+      const res = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${signal.city}&units=metric&APPID=17901880cf618f6a938a98535f079158`
+      );
+      if (!res.ok) return;
+      const json = await res.json();
+      setData(json);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-        if (!res.ok) {
-          console.error('errore');
-          return;
-        }
-
-        const json = await res.json();
-        setData(json);
-        console.log(json);;
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchWeather();
-  }, []);
+  fetchWeather();
+}, [signal?.city]);
 
   let daily = []
 
-    useEffect(() => {
-      console.log('data changed for week:', data);
-    }, [data]);
 
 if (data?.list) {
    daily = data.list.filter(item =>
     item.dt_txt.includes("12:00:00")
   )
 
-  console.log(daily)
+
 }
+
+
 
 const elements = daily.map(day => {
   const icon = day.weather[0].icon
   const weather = day.weather[0].main
-  // const date = day.dt_txt.slice(2, 10).replace("-", ":").replace("-", ":")
+
   const date = new Date(day.dt);
 
 const formatted = date.toLocaleDateString("en-US", {
@@ -74,7 +70,9 @@ const formatted = date.toLocaleDateString("en-US", {
 
 
 
-
+if (signal.cod !== 2) {
+  return null
+} else {
   return <div className={style.weekForecast}>
   <div className={`container ${style.weekForecastContainer}`}>
     <h2 className={style.title}>5-day forecast</h2>
@@ -83,6 +81,6 @@ const formatted = date.toLocaleDateString("en-US", {
     </ul>
     </div>
   </div>;
-  
+}
 };
 export default WeekForecast;
