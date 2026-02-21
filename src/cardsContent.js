@@ -4,7 +4,7 @@ export const CardsContext = createContext(null);
 
 export const CardsProvider = ({ children }) => {
   const [cards, setCards] = useState([]);
-  const [signal, setSignal] = useState('await');
+  const [signal, setSignal] = useState({ state: 'await', cod: 0, city: null });
 
   const addCard = newCard => {
     setCards(prev => {

@@ -1,7 +1,6 @@
 import style from '../css/week-forecast.module.css'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { CardsContext } from '../cardsContent';
-import { useContext } from 'react';
 
 
 const WeekForecast = () => {
@@ -33,16 +32,14 @@ if (data?.list) {
     item.dt_txt.includes("12:00:00")
   )
 
-
 }
-
 
 
 const elements = daily.map(day => {
   const icon = day.weather[0].icon
   const weather = day.weather[0].main
-
-  const date = new Date(day.dt);
+  const date = new Date(day.dt_txt);
+  // console.log(new Date(day.dt_txt))
 
 const formatted = date.toLocaleDateString("en-US", {
   weekday: "short",
@@ -67,6 +64,8 @@ const formatted = date.toLocaleDateString("en-US", {
     </li>
   )
 })
+
+
 
 
 

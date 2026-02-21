@@ -16,7 +16,6 @@ const DetailedInfo = () => {
     const neededCard = cards.find(card => card.city === signal.city);
     console.log(neededCard);
 const tempIcon = neededCard.context.main.feels_like < 0 ? lowTemp : highTemp;
-// console.log(neededCard.context.main.feels_like < 0)
     return (
       <div className="container">
         <ul className={style.list}>

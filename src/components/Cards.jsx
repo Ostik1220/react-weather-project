@@ -58,10 +58,7 @@ const CardItem = memo(({ card }) => {
             },
           }}
           onClick={() => {
-            setSignal({
-              cod: 1,
-              city: city,
-            });
+            setSignal({ state: 'await', cod: 1, city: city });
           }}
         >
           Hourly forecast
@@ -85,10 +82,7 @@ const CardItem = memo(({ card }) => {
             },
           }}
           onClick={() => {
-            setSignal({
-              cod: 2,
-              city: city,
-            });
+            setSignal({ state: 'await', cod: 2, city: city });
           }}
         >
           Weekly forecast
@@ -119,7 +113,7 @@ const CardItem = memo(({ card }) => {
           className={style.svg}
           onClick={() => {
             setRender(render + 1);
-            setSignal('await');
+            setSignal({ state: 'await', cod: 0, city: null });
           }}
         />
         <img src={hearthsvg} alt="" className={style.svg} />
@@ -136,10 +130,7 @@ const CardItem = memo(({ card }) => {
             },
           }}
           onClick={() => {
-            setSignal({
-              cod: 3,
-              city: city,
-            });
+            setSignal({ state: 'await', cod: 3, city: city });
           }}
         >
           See more
@@ -150,7 +141,7 @@ const CardItem = memo(({ card }) => {
           className={style.svg}
           onClick={() => {
             deleteCard(city);
-            setSignal('await');
+            setSignal({ state: 'await', cod: 0, city: null });
           }}
         />
       </div>
@@ -162,7 +153,7 @@ const Cards = () => {
   const { cards, addCard, signal, setSignal } = useContext(CardsContext);
 
   useEffect(() => {
-    if (signal !== 'load') return;
+    if (signal.state !== 'load') return;
 
     const lastCard = cards[cards.length - 1];
     if (!lastCard) return;
@@ -177,7 +168,7 @@ const Cards = () => {
 
         const json = await res.json();
         addCard(json);
-        setSignal('await');
+        setSignal({ state: 'await', cod: 0, city: null });
       } catch (err) {
         console.error(err);
       }
@@ -186,7 +177,6 @@ const Cards = () => {
     fetchWeather();
   }, [signal, cards, addCard]);
 const cardsVisibility = cards.length > 0 ? style.cards : style.invisible;
-console.log(cardsVisibility);
   return (
     <div className={cardsVisibility} id="menu">
       <div className={`container ${style.cardsContainer}`}>
