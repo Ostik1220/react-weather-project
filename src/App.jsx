@@ -9,6 +9,7 @@ import Nature from 'components/Nature';
 import Footer from 'components/Footer';
 import { CircularProgress } from 'react-loader-spinner';
 import { CardsProvider } from 'cardsContent';
+import { ToastContainer } from 'react-toastify';
 
 export const App = () => {
   return (
@@ -35,6 +36,7 @@ animationDuration={1}
         <Nature />
         <Footer />
       </CardsProvider>
+      <ToastContainer position="top-right" autoClose={2000} />
     </div>
   );
 };

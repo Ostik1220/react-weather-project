@@ -6,12 +6,12 @@ import user from '../img/user.png';
 import styles from '../css/header.module.css';
 import Modal from './Modal.jsx';
 import { useState } from 'react';
+import {  toast } from 'react-toastify';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [mobOpen, setMobOpen] = useState(false);
   const [userName, setUserName] = useState(localStorage.User || null);
-
   let mobileMenu = null;
   const rotate = e => {
     setMobOpen(prev => !prev);
@@ -20,19 +20,26 @@ const Header = () => {
       : 'rotate(-90deg)';
   };
 
+ const notifyWarning = () => toast.warning("Successfully logged out.");
+
   const resetLoginisation = () => {
-    localStorage.clear();
+    notifyWarning()
     setUserName(null);
+    console.log(localStorage.logged)
+    localStorage.setItem('logged', false)
   };
 
-  const loginisation = userName ? (
+    
+     
+  const loginisation = localStorage.logged === 'true' ?  (
     <div className={styles.boxName}>
-      <IoTrashBin className={styles.treshName} onClick={resetLoginisation} />
+      <IoTrashBin className={styles.treshName} onClick={resetLoginisation}/>
       <a className={styles.itemLinkName} onClick={resetLoginisation}>
         {userName}
       </a>
     </div>
   ) : (
+    <>
     <Button
       variant="contained"
       color="default"
@@ -49,6 +56,7 @@ const Header = () => {
     >
       Sign Up
     </Button>
+    </>
   );
 
   if (mobOpen === true) {
@@ -135,6 +143,7 @@ const Header = () => {
         </div>
         <Modal open={open} setOpen={setOpen} onLogin={setUserName} />
       </div>
+      
       {mobileMenu}
     </>
   );

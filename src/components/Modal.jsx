@@ -1,6 +1,7 @@
 import Button from '@mui/material/Button';
 import style from '../css/modal.module.css';
 import { useEffect } from 'react';
+  import {  toast } from 'react-toastify';
 
 const Modal = ({ open, setOpen, onLogin }) => {
   useEffect(() => {
@@ -26,15 +27,18 @@ const Modal = ({ open, setOpen, onLogin }) => {
       setOpen(false);
     }
   };
+ const notifySuccess = () => toast.success("Successfully logged in.");
+
 
   const localizeUser = e => {
     e.preventDefault();
     const form = e.target;
     const username = form.username.value;
-
     localStorage.setItem('User', username);
     onLogin(username);
     setOpen(false);
+    notifySuccess()
+    localStorage.setItem('logged', true)
   };
 
   return (
@@ -95,6 +99,7 @@ const Modal = ({ open, setOpen, onLogin }) => {
           >
             Sign Up
           </Button>
+          
           <p className={style.text}>
             Already have an account?{' '}
             <a href="./" className={style.link}>

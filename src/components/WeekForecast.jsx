@@ -39,7 +39,6 @@ const elements = daily.map(day => {
   const icon = day.weather[0].icon
   const weather = day.weather[0].main
   const date = new Date(day.dt_txt);
-  // console.log(new Date(day.dt_txt))
 
 const formatted = date.toLocaleDateString("en-US", {
   weekday: "short",

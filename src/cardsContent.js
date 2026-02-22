@@ -5,7 +5,10 @@ export const CardsContext = createContext(null);
 export const CardsProvider = ({ children }) => {
   const [cards, setCards] = useState([]);
   const [signal, setSignal] = useState({ state: 'await', cod: 0, city: null });
-
+  const [favourites, setFavourites] = useState(() => {
+    const stored = localStorage.getItem('favourite');
+    return stored ? JSON.parse(stored) : [];
+  });
   const addCard = newCard => {
     setCards(prev => {
       if (typeof newCard === 'string') {
@@ -37,9 +40,24 @@ export const CardsProvider = ({ children }) => {
     setCards(cards.filter(card => card.city !== cardCity));
   };
 
+  const favouriteCard = cardCity => {
+  setFavourites(prev => {
+    if (prev.some(card => card.city === cardCity)) return prev;
+
+    const cardObject = cards.find(card => card.city === cardCity);
+
+    if (!cardObject) return prev;
+
+    const updated = [...prev, cardObject];
+    localStorage.setItem('favourite', JSON.stringify(updated));
+
+    return updated;
+  });
+};
+
   return (
     <CardsContext.Provider
-      value={{ cards, addCard, deleteCard, signal, setSignal }}
+      value={{ cards, addCard, deleteCard, signal, setSignal, favouriteCard }}
     >
       {children}
     </CardsContext.Provider>
