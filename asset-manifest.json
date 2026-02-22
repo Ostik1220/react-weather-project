@@ -1,13 +1,23 @@
 {
   "files": {
-    "main.css": "/react-homework-template/static/css/main.7acaea2f.css",
-    "main.js": "/react-homework-template/static/js/main.07d3183d.js",
-    "index.html": "/react-homework-template/index.html",
-    "main.7acaea2f.css.map": "/react-homework-template/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/react-homework-template/static/js/main.07d3183d.js.map"
+    "main.css": "/react-weather-project/static/css/main.75853f31.css",
+    "main.js": "/react-weather-project/static/js/main.a05ceb09.js",
+    "static/media/hero-background.png": "/react-weather-project/static/media/hero-background.b4015738e85a0455586b.png",
+    "static/media/heart.svg": "/react-weather-project/static/media/heart.f88d9af078078616ae98803e7bd9a4d3.svg",
+    "static/media/high-temperature.png": "/react-weather-project/static/media/high-temperature.82b502fe367e294ea252.png",
+    "static/media/search-phone.svg": "/react-weather-project/static/media/search-phone.53ad4159196b6414d66b0893d645832d.svg",
+    "static/media/search-tablet.svg": "/react-weather-project/static/media/search-tablet.f867cd7c8193f94b3463805633cbdf38.svg",
+    "static/media/search-desktop.svg": "/react-weather-project/static/media/search-desktop.d1f33126e1a66ecac9d9bcc4fd68e24f.svg",
+    "static/media/low-temperature.png": "/react-weather-project/static/media/low-temperature.03b6134514e4cd934537.png",
+    "static/media/refresh.svg": "/react-weather-project/static/media/refresh.98ae06a4bf227e1dbf758e7f418441b4.svg",
+    "static/media/pressure.png": "/react-weather-project/static/media/pressure.2ca6b0bbf47038dd180f.png",
+    "static/media/delete.svg": "/react-weather-project/static/media/delete.b1bb0d8f1b387f94a442c00dfb909db2.svg",
+    "index.html": "/react-weather-project/index.html",
+    "main.75853f31.css.map": "/react-weather-project/static/css/main.75853f31.css.map",
+    "main.a05ceb09.js.map": "/react-weather-project/static/js/main.a05ceb09.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/css/main.75853f31.css",
+    "static/js/main.a05ceb09.js"
   ]
 }
