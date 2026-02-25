@@ -31,13 +31,11 @@ const Hero = () => {
   }
 
   const collectCity = e => {
-    if (signal.state === 'await') {
       e.preventDefault();
       addCard(e.target.city.value);
       console.log(cards);
       e.target.city.value = '';
       setSignal({ state: 'load', cod: 0, city: null });
-    }
   };
 
   return (

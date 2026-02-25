@@ -3,6 +3,7 @@ import { createContext, useState } from 'react';
 export const CardsContext = createContext(null);
 
 export const CardsProvider = ({ children }) => {
+  const [isLogged, setIsLogged] = useState(localStorage.logged);
   const [cards, setCards] = useState([]);
   const [signal, setSignal] = useState({ state: 'await', cod: 0, city: null });
   const [favourites, setFavourites] = useState(() => {
@@ -57,7 +58,7 @@ export const CardsProvider = ({ children }) => {
 
   return (
     <CardsContext.Provider
-      value={{ cards, addCard, deleteCard, signal, setSignal, favouriteCard }}
+      value={{ cards, addCard, deleteCard, signal, setSignal, favouriteCard, isLogged, setIsLogged }}
     >
       {children}
     </CardsContext.Provider>

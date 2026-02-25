@@ -69,6 +69,10 @@
   }
 }
 
+#heart{
+  color: orangered;
+}
+
 .city {
   font-family: 'Montserrat';
   font-weight: 500;
