@@ -56,9 +56,17 @@ export const CardsProvider = ({ children }) => {
   });
 };
 
+const removeFavourite = cardCity => {
+  setFavourites(prev => {
+    const updated = prev.filter(card => card.city !== cardCity);
+    localStorage.setItem('favourite', JSON.stringify(updated));
+    return updated;
+  });
+};
+
   return (
     <CardsContext.Provider
-      value={{ cards, addCard, deleteCard, signal, setSignal, favouriteCard, isLogged, setIsLogged }}
+      value={{ cards, addCard, deleteCard, signal, setSignal, favouriteCard, isLogged, setIsLogged, favourites, removeFavourite }}
     >
       {children}
     </CardsContext.Provider>

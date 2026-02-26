@@ -9,12 +9,11 @@ import deletesvg from '../img/delete.svg';
 import style from '../css/cards.module.css';
 import { toast } from 'react-toastify';
 
-const CardItem = memo(({ card }) => {
-  const [isCardFavourited, setIsCardFavourited] = useState(false);
-  const favourites = JSON.parse(localStorage.favourite || '[]');
-  const { deleteCard, setSignal, favouriteCard } = useContext(CardsContext);
+const CardItem = memo(({ card, heartStat }) => {
+  const [isCardFavourited, setIsCardFavourited] = useState(heartStat);
+  const { deleteCard, setSignal, favouriteCard, favourites, removeFavourite} = useContext(CardsContext);
   const [render, setRender] = useState(1);
-  const notifyDelete = () => toast.error('Card was deleted.');
+  const notifyDelete = (messege) => toast.error(`${messege}`);
   const notifyReload = () => toast('Card was reloaded.');
   const notifyFavourite = () => toast('Card was added to favourite.');
   const timezoneOffset = card.context?.timezone ?? 0;
@@ -36,11 +35,6 @@ const CardItem = memo(({ card }) => {
     })
     .replaceAll('/', '.');
 
-  const deleteFromFavourite = city => {
-    const newFavourite = favourites.filter(card => card.city !== city);
-    console.log(newFavourite);
-    localStorage.setItem('favourite', JSON.stringify(newFavourite));
-  };
 
   const hearthsvgcurrent = !isCardFavourited ? hearthsvg : hearthsvgActive;
   if (card.context !== null) {
@@ -57,7 +51,6 @@ const CardItem = memo(({ card }) => {
               variant="contained"
               color="default"
               sx={{
-                padding: '8px 18px',
                 width: '96px',
                 height: '23px',
                 fontSize: '9px',
@@ -81,7 +74,6 @@ const CardItem = memo(({ card }) => {
               variant="contained"
               color="default"
               sx={{
-                padding: '8px 18px',
                 width: '96px',
                 height: '23px',
                 fontSize: '9px',
@@ -136,9 +128,15 @@ const CardItem = memo(({ card }) => {
               className={style.svg}
               key="heart"
               onClick={() => {
+                if(isCardFavourited === false){
                 notifyFavourite();
                 favouriteCard(city);
                 setIsCardFavourited(true);
+              } else {
+                  removeFavourite(city);
+                  setIsCardFavourited(false);
+                  notifyDelete("Card was deleted from favourite.")
+              }
               }}
             />
             <Button
@@ -166,8 +164,8 @@ const CardItem = memo(({ card }) => {
               onClick={() => {
                 deleteCard(city);
                 setSignal({ state: 'await', cod: 0, city: null });
-                notifyDelete();
-                deleteFromFavourite(city);
+                notifyDelete("Card was deleted from favourite.");
+                removeFavourite(city);
               }}
             />
           </div>
@@ -186,7 +184,6 @@ const CardItem = memo(({ card }) => {
               variant="contained"
               color="default"
               sx={{
-                padding: '8px 18px',
                 width: '96px',
                 height: '23px',
                 fontSize: '9px',
@@ -210,7 +207,6 @@ const CardItem = memo(({ card }) => {
               variant="contained"
               color="default"
               sx={{
-                padding: '8px 18px',
                 width: '96px',
                 height: '23px',
                 fontSize: '9px',
@@ -274,8 +270,8 @@ const CardItem = memo(({ card }) => {
               onClick={() => {
                 deleteCard(city);
                 setSignal({ state: 'await', cod: 0, city: null });
-                notifyDelete();
-                deleteFromFavourite(city);
+                notifyDelete("Card was deleted.");
+                removeFavourite(city);
               }}
             />
           </div>
@@ -288,12 +284,12 @@ const CardItem = memo(({ card }) => {
 });
 
 const Cards = () => {
-  const { cards, addCard, signal, setSignal, isLogged } =
+  const { cards, addCard, signal, setSignal, isLogged, favourites } =
     useContext(CardsContext);
   const notifySuccess = () => toast.success('City was founded.');
   const notifyError = () =>
     toast.error(`City wasn't founded, please reload the page.`);
-
+console.log(isLogged, favourites, cards);
   useEffect(() => {
     if (signal.state !== 'load') return;
 
@@ -321,45 +317,36 @@ const Cards = () => {
     };
 
     fetchWeather();
-  }, [signal, cards, addCard, isLogged]);
+  }, [signal, cards, addCard, isLogged, setSignal]);
 
-  useEffect(() => {
-    console.log('isLogged changed:', isLogged);
-  }, [isLogged]);
-  function cardsIfLogged() {
-    const favourites = JSON.parse(localStorage.favourite || '[]');
+  // useEffect(() => {
+  //   console.log('isLogged changed:', isLogged);
+  // }, [isLogged]);
 
-    const favouriteCities = favourites.map(card => card.city);
+const favouriteCities = favourites.map(card => card.city);
 
-    const filteredCards = cards.filter(
-      card => !favouriteCities.includes(card.city)
-    );
-
-    return (
-      <>
-        {favourites.map((card, index) => (
-          <CardItem key={card.city || index} card={card} />
-        ))}
-
-        {filteredCards.map((card, index) => (
-          <CardItem key={card.city || index} card={card} />
-        ))}
-      </>
-    );
-  }
-
-  const cardsByLogged =
-    localStorage.logged === 'true'
-      ? cardsIfLogged()
-      : cards.map((card, index) => <CardItem key={index} card={card} />);
+const sortedCards = isLogged
+  ? [
+      ...cards.filter(card => favouriteCities.includes(card.city)),
+      ...cards.filter(card => !favouriteCities.includes(card.city)),
+    ]
+  : cards;
 
   const cardsVisibility = cards.length > 0 ? style.cards : style.invisible;
 
   return (
-    <div className={cardsVisibility} id="menu">
-      <div className={`container ${style.cardsContainer}`}>{cardsByLogged}</div>
+  <div className={cardsVisibility} id="menu">
+    <div className={`container ${style.cardsContainer}`}>
+      {sortedCards.map((card, index) => (
+        <CardItem
+          key={card.city || index}
+          card={card}
+          heartStat={isLogged && favouriteCities.includes(card.city)}
+        />
+      ))}
     </div>
-  );
+  </div>
+);
 };
 
 export default Cards;

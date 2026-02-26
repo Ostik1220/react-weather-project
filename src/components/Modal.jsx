@@ -1,9 +1,11 @@
 import Button from '@mui/material/Button';
 import style from '../css/modal.module.css';
-import { useEffect, useState } from 'react';
-  import {  toast } from 'react-toastify';
+import { useEffect, useState, useContext } from 'react';
+import {  toast } from 'react-toastify';
+import { CardsContext } from 'cardsContent';
 
 const Modal = ({ open, setOpen, onLogin }) => {
+  const {setSignal, favourites} = useContext(CardsContext)
   const [accountExist, setAccountExist] = useState(false)
   useEffect(() => {
     const handleKeyDown = event => {
@@ -40,6 +42,7 @@ const Modal = ({ open, setOpen, onLogin }) => {
     setOpen(false);
     notifySuccess()
     localStorage.setItem('logged', true)
+    setSignal({ state: 'load', cod: 0, city: null });
   };
 if (accountExist === false){
   return (
