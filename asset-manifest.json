@@ -1,9 +1,8 @@
 {
   "files": {
-    "main.css": "/react-weather-project/static/css/main.75853f31.css",
-    "main.js": "/react-weather-project/static/js/main.a05ceb09.js",
+    "main.css": "/react-weather-project/static/css/main.e3bbd466.css",
+    "main.js": "/react-weather-project/static/js/main.522fe7b9.js",
     "static/media/hero-background.png": "/react-weather-project/static/media/hero-background.b4015738e85a0455586b.png",
-    "static/media/heart.svg": "/react-weather-project/static/media/heart.f88d9af078078616ae98803e7bd9a4d3.svg",
     "static/media/high-temperature.png": "/react-weather-project/static/media/high-temperature.82b502fe367e294ea252.png",
     "static/media/search-phone.svg": "/react-weather-project/static/media/search-phone.53ad4159196b6414d66b0893d645832d.svg",
     "static/media/search-tablet.svg": "/react-weather-project/static/media/search-tablet.f867cd7c8193f94b3463805633cbdf38.svg",
@@ -13,11 +12,13 @@
     "static/media/pressure.png": "/react-weather-project/static/media/pressure.2ca6b0bbf47038dd180f.png",
     "static/media/delete.svg": "/react-weather-project/static/media/delete.b1bb0d8f1b387f94a442c00dfb909db2.svg",
     "index.html": "/react-weather-project/index.html",
-    "main.75853f31.css.map": "/react-weather-project/static/css/main.75853f31.css.map",
-    "main.a05ceb09.js.map": "/react-weather-project/static/js/main.a05ceb09.js.map"
+    "static/media/heart.svg": "/react-weather-project/static/media/heart.d78a3cc0fbccdefa01c6088be57ed121.svg",
+    "static/media/heartActive.svg": "/react-weather-project/static/media/heartActive.c7da4e15541e0d920cd476c4677b7f8a.svg",
+    "main.e3bbd466.css.map": "/react-weather-project/static/css/main.e3bbd466.css.map",
+    "main.522fe7b9.js.map": "/react-weather-project/static/js/main.522fe7b9.js.map"
   },
   "entrypoints": [
-    "static/css/main.75853f31.css",
-    "static/js/main.a05ceb09.js"
+    "static/css/main.e3bbd466.css",
+    "static/js/main.522fe7b9.js"
   ]
 }
