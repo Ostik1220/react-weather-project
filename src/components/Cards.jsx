@@ -324,8 +324,7 @@ console.log(isLogged, favourites, cards);
   // }, [isLogged]);
 
 function cardsIfLogged() {  
-  const Xfavourites = JSON.parse(localStorage.favourite || '[]');
-   console.log(favourites) 
+     console.log(favourites) 
    const favouriteCities = favourites.map(card => card.city); 
    const filteredCards = cards.filter( card => !favouriteCities.includes(card.city) );
 

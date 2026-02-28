@@ -5,13 +5,14 @@ import logo from '../img/logo.png';
 import user from '../img/user.png';
 import styles from '../css/header.module.css';
 import Modal from './Modal.jsx';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { CardsContext } from 'cardsContent';
 import {  toast } from 'react-toastify';
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
   const [mobOpen, setMobOpen] = useState(false);
   const [userName, setUserName] = useState(localStorage.User || null);
+  const { open, setOpen} = useContext(CardsContext)
   let mobileMenu = null;
   const rotate = e => {
     setMobOpen(prev => !prev);
@@ -108,7 +109,7 @@ const Header = () => {
   return (
     <>
       <div className="container">
-        <div className={styles.header}>
+        <div className={styles.header} id="header">
           <img src={logo} alt="Logo" className={styles.logo} />
           <ul className={styles.list}>
             <li>

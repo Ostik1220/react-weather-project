@@ -4,8 +4,8 @@ import { useEffect, useState, useContext } from 'react';
 import {  toast } from 'react-toastify';
 import { CardsContext } from 'cardsContent';
 
-const Modal = ({ open, setOpen, onLogin }) => {
-  const {setSignal, favourites} = useContext(CardsContext)
+const Modal = ({ onLogin }) => {
+  const {setSignal, favourites,  open, setOpen,} = useContext(CardsContext)
   const [accountExist, setAccountExist] = useState(false)
   useEffect(() => {
     const handleKeyDown = event => {
@@ -36,9 +36,9 @@ const Modal = ({ open, setOpen, onLogin }) => {
   const localizeUser = e => {
     const form = e.target;
     e.preventDefault();
-    if (form.email.value === localStorage.email || accountExist === true){
+    if (form.email.value === localStorage.email && accountExist === false){
     notifySuccess("It seems account with this email was already created, would you like to log in?")
-    console.log(accountExist)
+          console.log(form.email.value === localStorage.email || accountExist === true)
     } else {
     const username = form.username.value;
     localStorage.setItem('User', username);
@@ -48,6 +48,7 @@ const Modal = ({ open, setOpen, onLogin }) => {
     localStorage.setItem('logged', true)
     setSignal({ state: 'load', cod: 0, city: null });
     localStorage.setItem('email', form.email.value)
+    console.log(form.email.value === localStorage.email && accountExist === true)
     }
   };
 if (accountExist === false){
@@ -139,13 +140,13 @@ if (accountExist === false){
               />
             </li>
             <li className={style.item}>
-              <label htmlFor="password" className={style.label}>
-                Password
+              <label htmlFor="email" className={style.label}>
+                E-mail
               </label>
               <input
-                type="password"
-                id="password"
-                name="password"
+                type="email"
+                id="email"
+                name="email"
                 required
                 className={style.input}
               />
