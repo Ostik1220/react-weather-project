@@ -323,30 +323,27 @@ console.log(isLogged, favourites, cards);
   //   console.log('isLogged changed:', isLogged);
   // }, [isLogged]);
 
-const favouriteCities = favourites.map(card => card.city);
+function cardsIfLogged() {  
+  const Xfavourites = JSON.parse(localStorage.favourite || '[]');
+   console.log(favourites) 
+   const favouriteCities = favourites.map(card => card.city); 
+   const filteredCards = cards.filter( card => !favouriteCities.includes(card.city) );
 
-const sortedCards = isLogged
-  ? [
-      ...cards.filter(card => favouriteCities.includes(card.city)),
-      ...cards.filter(card => !favouriteCities.includes(card.city)),
-    ]
-  : cards;
+    return ( <> {favourites.map((card, index) => ( <CardItem key={card.city || index} card={card} heartStat={true} /> ))}
+     {filteredCards.map((card, index) => ( <CardItem key={card.city || index} card={card} heartStat={false}/> ))} </> );
+      }
+      const cardsByLogged = localStorage.logged === 'true' ? 
+      cardsIfLogged()
+       : cards.map((card, index) => <CardItem key={index} card={card} />);
 
-  const cardsVisibility = cards.length > 0 ? style.cards : style.invisible;
-
-  return (
-  <div className={cardsVisibility} id="menu">
-    <div className={`container ${style.cardsContainer}`}>
-      {sortedCards.map((card, index) => (
-        <CardItem
-          key={card.city || index}
-          card={card}
-          heartStat={isLogged && favouriteCities.includes(card.city)}
-        />
-      ))}
-    </div>
-  </div>
-);
-};
+        const cardsVisibility = cards.length > 0 ? style.cards : style.invisible;
+         return ( 
+         <div className={cardsVisibility} id="menu">
+           <div className={`container ${style.cardsContainer}`}>
+            {cardsByLogged}
+            </div> 
+            </div>
+         )
+            };
 
 export default Cards;

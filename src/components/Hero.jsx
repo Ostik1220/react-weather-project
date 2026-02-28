@@ -5,10 +5,10 @@ import glassPhone from '../img/search-phone.svg';
 import Button from '@mui/material/Button';
 import { useMediaQuery } from '@mui/material';
 import { CardsContext } from '../cardsContent';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 const Hero = () => {
-  const { cards, addCard, setSignal, signal } = useContext(CardsContext);
+  const { cards, addCard, setSignal, signal, isLogged, favourites } = useContext(CardsContext);
 
   const day = new Date().getDate();
   const month = new Date().toLocaleString('en-US', { month: 'long' });
@@ -19,6 +19,14 @@ const Hero = () => {
   let width = 16;
   let height = 15;
   let search = glassPhone;
+useEffect(() => {
+  if (!isLogged) return;
+
+  favourites.forEach(fav => {
+  addCard(fav.city);     
+  addCard(fav.context);   
+});
+}, [isLogged]);
 
   if (isDesktop) {
     width = 45;
@@ -29,6 +37,8 @@ const Hero = () => {
     height = 27;
     search = glassTablet;
   }
+
+
 
   const collectCity = e => {
       e.preventDefault();
