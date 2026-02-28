@@ -30,19 +30,25 @@ const Modal = ({ open, setOpen, onLogin }) => {
       setOpen(false);
     }
   };
- const notifySuccess = () => toast.success("Successfully logged in.");
+ const notifySuccess = (text) => toast.success(text);
 
 
   const localizeUser = e => {
-    e.preventDefault();
     const form = e.target;
+    e.preventDefault();
+    if (form.email.value === localStorage.email || accountExist === true){
+    notifySuccess("It seems account with this email was already created, would you like to log in?")
+    console.log(accountExist)
+    } else {
     const username = form.username.value;
     localStorage.setItem('User', username);
     onLogin(username);
     setOpen(false);
-    notifySuccess()
+    notifySuccess("Successfully logged in.")
     localStorage.setItem('logged', true)
     setSignal({ state: 'load', cod: 0, city: null });
+    localStorage.setItem('email', form.email.value)
+    }
   };
 if (accountExist === false){
   return (
