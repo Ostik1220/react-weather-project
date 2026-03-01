@@ -31,13 +31,15 @@ const Modal = ({ onLogin }) => {
     }
   };
  const notifySuccess = (text) => toast.success(text);
+  const notifyWarning = (text) => toast.warning(text);
+
 
 
   const localizeUser = e => {
     const form = e.target;
     e.preventDefault();
     if (form.email.value === localStorage.email && accountExist === false){
-    notifySuccess("It seems account with this email was already created, would you like to log in?")
+    notifyWarning("It seems account with this email was already created, would you like to log in?")
           console.log(form.email.value === localStorage.email || accountExist === true)
     } else {
     const username = form.username.value;
