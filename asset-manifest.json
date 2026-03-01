@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-weather-project/static/css/main.57198085.css",
-    "main.js": "/react-weather-project/static/js/main.d8ec5fb2.js",
+    "main.js": "/react-weather-project/static/js/main.784c3a0a.js",
     "static/media/hero-background.png": "/react-weather-project/static/media/hero-background.b4015738e85a0455586b.png",
     "static/media/high-temperature.png": "/react-weather-project/static/media/high-temperature.82b502fe367e294ea252.png",
     "static/media/search-phone.svg": "/react-weather-project/static/media/search-phone.53ad4159196b6414d66b0893d645832d.svg",
@@ -15,10 +15,10 @@
     "static/media/heart.svg": "/react-weather-project/static/media/heart.d78a3cc0fbccdefa01c6088be57ed121.svg",
     "static/media/heartActive.svg": "/react-weather-project/static/media/heartActive.c7da4e15541e0d920cd476c4677b7f8a.svg",
     "main.57198085.css.map": "/react-weather-project/static/css/main.57198085.css.map",
-    "main.d8ec5fb2.js.map": "/react-weather-project/static/js/main.d8ec5fb2.js.map"
+    "main.784c3a0a.js.map": "/react-weather-project/static/js/main.784c3a0a.js.map"
   },
   "entrypoints": [
     "static/css/main.57198085.css",
-    "static/js/main.d8ec5fb2.js"
+    "static/js/main.784c3a0a.js"
   ]
 }
