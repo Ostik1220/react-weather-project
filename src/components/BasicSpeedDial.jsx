@@ -40,11 +40,19 @@ const actions = [
   return (
     <SpeedDial
       ariaLabel="SpeedDial example"
-      sx={{ position: 'fixed', 
-        bottom: 16, 
-        right: 16, 
-        zIndex: 1000,
-      }}
+      color="default"
+       sx={{
+          position: 'absolute',
+          bottom: 16,
+          right: 16,
+          '& .MuiSpeedDial-fab': {
+            backgroundColor: '#ffb36c;',
+            color: 'white', 
+            '&:hover': {
+              backgroundColor: '#ff9d6c;', 
+            },
+          },
+        }}
       icon={<SpeedDialIcon />}
     >
       {actions.map(action => (
