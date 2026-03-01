@@ -20,7 +20,7 @@ const Hero = () => {
   let height = 15;
   let search = glassPhone;
 useEffect(() => {
-  if (!isLogged) return;
+  if (isLogged === "false") return;
 
   favourites.forEach(fav => {
   addCard(fav.city);     

@@ -17,10 +17,9 @@ export const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // якщо є реальний запит — прибери setTimeout
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 1000);
   }, []);
 
   if (loading) {

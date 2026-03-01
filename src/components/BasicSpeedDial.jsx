@@ -17,32 +17,32 @@ export default function BasicSpeedDial() {
    const notifyWarning = () => toast.warning("Successfully logged out.");
 
 const actions = [
+      { icon: <KeyboardArrowDownIcon />, name: 'Scroll down', logic: function() {
+  const el = document.getElementById('footer');
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+} },
   { icon: <LoginIcon />, name: 'Log in', 
     logic: function() {
     setOpen(true)
   }
    },
-  { icon: <KeyboardArrowUpIcon />, name: 'Scroll up', logic: function() {
-  const el = document.getElementById('header'); 
-  if (el) el.scrollIntoView({ behavior: 'smooth' }); 
-}},
-  { icon: <KeyboardArrowDownIcon />, name: 'Scroll down', logic: function() {
-  const el = document.getElementById('footer');
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-} },
   { icon: <LogoutIcon />, name: 'Log out', logic: function() {
     notifyWarning()
     setUserName(null);
     console.log(localStorage.logged)
     localStorage.setItem('logged', false)
   } },
+{ icon: <KeyboardArrowUpIcon />, name: 'Scroll up', logic: function() {
+  const el = document.getElementById('header'); 
+  if (el) el.scrollIntoView({ behavior: 'smooth' }); 
+}},
 ];
   return (
     <SpeedDial
       ariaLabel="SpeedDial example"
       color="default"
        sx={{
-          position: 'absolute',
+          position: 'fixed',
           bottom: 16,
           right: 16,
           '& .MuiSpeedDial-fab': {
